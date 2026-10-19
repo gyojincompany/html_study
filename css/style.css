@@ -11,16 +11,16 @@ h1.blue {
 
 p.green {
     color: rgb(64, 226, 43);
-    font-size: 50px;
+    font-size: 200px;
 }
 
 p.pink {
-    color: rgb(226, 43, 134);
+    color: rgb(0, 0, 0);
     font-size: 50px;
 }
 
 #gray {
-    color: rgb(16, 32, 32);
+    color: #000000;
     font-size: 60;
     font-family: 궁서체, 맑은 고딕, 굴림, 돋움;
 }
