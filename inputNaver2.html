@@ -1,0 +1,475 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVER 회원가입</title>
+
+    <style>
+        /* 전체 페이지 */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: "Malgun Gothic", sans-serif;
+            background: #f5f6f7;
+            color: #222;
+        }
+
+        /* 전체 컨테이너 */
+        .container {
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* 네이버 로고 영역 */
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            margin: 0;
+            color: #03c75a;
+            font-size: 46px;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .logo p {
+            margin-top: 10px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* 회원가입 카드 */
+        .signup-box {
+            background: #fff;
+            padding: 35px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .signup-box h2 {
+            margin: 0 0 8px;
+            font-size: 23px;
+            text-align: center;
+        }
+
+        .description {
+            margin: 0 0 30px;
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* 입력 항목 */
+        .form-group {
+            margin-bottom: 21px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 9px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .required {
+            color: #03c75a;
+            margin-left: 3px;
+        }
+
+        /* 입력창 공통 디자인 */
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #dadada;
+            border-radius: 7px;
+            background: #fff;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s,
+                        box-shadow 0.2s;
+        }
+
+        /* 입력창에 커서를 놓았을 때 */
+        input:focus,
+        textarea:focus {
+            border-color: #03c75a;
+            box-shadow: 0 0 0 3px rgba(3, 199, 90, 0.10);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #aaa;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+            line-height: 1.6;
+        }
+
+        /* 성별 선택 */
+        .radio-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .radio-option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px;
+            border: 1px solid #dadada;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .radio-option:has(input:checked) {
+            border-color: #03c75a;
+            background: #f1fff7;
+            color: #029e48;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            accent-color: #03c75a;
+            cursor: pointer;
+        }
+
+        /* 취미 선택 */
+        .hobby-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .hobby-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            border: 1px solid #e5e5e5;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .hobby-option:hover {
+            background: #f1fff7;
+        }
+
+        /* 안내 문구 */
+        .help-text {
+            display: block;
+            margin-top: 7px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* 버튼 영역 */
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .button-group input {
+            flex: 1;
+            padding: 15px 10px;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        /* 가입 버튼 */
+        .submit-btn {
+            background: #03c75a;
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background: #02b350;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(3, 199, 90, 0.2);
+        }
+
+        /* 초기화 버튼 */
+        .reset-btn {
+            background: #f1f3f5;
+            color: #555;
+        }
+
+        .reset-btn:hover {
+            background: #e5e8eb;
+        }
+
+        /* 하단 안내 */
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* 모바일 화면 */
+        @media (max-width: 480px) {
+            body {
+                padding: 25px 12px;
+            }
+
+            .signup-box {
+                padding: 28px 20px;
+            }
+
+            .logo h1 {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- 로고 -->
+        <div class="logo">
+            <h1>NAVER</h1>
+            <p>네이버 회원가입</p>
+        </div>
+
+        <!-- 회원가입 폼 -->
+        <div class="signup-box">
+
+            <h2>회원가입</h2>
+            <p class="description">
+                네이버의 다양한 서비스를 만나보세요.
+            </p>
+
+            <form action="#" method="post">
+
+                <!-- 아이디 -->
+                <div class="form-group">
+                    <label for="memberid">
+                        아이디<span class="required">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="memberid"
+                        name="memberid"
+                        placeholder="5~12자 사이로 입력하세요"
+                        minlength="5"
+                        maxlength="12"
+                        required
+                    >
+                </div>
+
+                <!-- 비밀번호 -->
+                <div class="form-group">
+                    <label for="password">
+                        비밀번호<span class="required">*</span>
+                    </label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="비밀번호를 입력하세요"
+                        minlength="10"
+                        required
+                    >
+                    <span class="help-text">
+                        대문자, 소문자, 숫자를 포함하여 10자 이상 입력하세요.
+                    </span>
+                </div>
+
+                <!-- 성별 -->
+                <div class="form-group">
+                    <label>
+                        성별<span class="required">*</span>
+                    </label>
+
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input
+                                type="radio"
+                                name="membergender"
+                                value="male"
+                                checked
+                            >
+                            남성
+                        </label>
+
+                        <label class="radio-option">
+                            <input
+                                type="radio"
+                                name="membergender"
+                                value="female"
+                            >
+                            여성
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 이름 -->
+                <div class="form-group">
+                    <label for="membername">
+                        이름<span class="required">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="membername"
+                        name="membername"
+                        placeholder="이름을 입력하세요"
+                        required
+                    >
+                </div>
+
+                <!-- 전화번호 -->
+                <div class="form-group">
+                    <label for="memberphone">전화번호</label>
+                    <input
+                        type="text"
+                        id="memberphone"
+                        name="memberphone"
+                        placeholder="'-' 없이 번호만 입력"
+                        inputmode="numeric"
+                    >
+                </div>
+
+                <!-- 이메일 -->
+                <div class="form-group">
+                    <label for="memberemail">
+                        이메일<span class="required">*</span>
+                    </label>
+                    <input
+                        type="email"
+                        id="memberemail"
+                        name="memberemail"
+                        placeholder="example@naver.com"
+                        required
+                    >
+                </div>
+
+                <!-- 주소 -->
+                <div class="form-group">
+                    <label for="memberaddr">주소</label>
+                    <input
+                        type="text"
+                        id="memberaddr"
+                        name="memberaddr"
+                        placeholder="주소를 입력하세요"
+                    >
+                </div>
+
+                <!-- 생일 -->
+                <div class="form-group">
+                    <label for="memberbirth">생년월일</label>
+                    <input
+                        type="date"
+                        id="memberbirth"
+                        name="memberbirth"
+                    >
+                </div>
+
+                <!-- 취미 -->
+                <div class="form-group">
+                    <label>취미</label>
+
+                    <div class="hobby-group">
+                        <label class="hobby-option">
+                            <input
+                                type="checkbox"
+                                name="memberhobby"
+                                value="sports"
+                            >
+                            운동
+                        </label>
+
+                        <label class="hobby-option">
+                            <input
+                                type="checkbox"
+                                name="memberhobby"
+                                value="book"
+                            >
+                            독서
+                        </label>
+
+                        <label class="hobby-option">
+                            <input
+                                type="checkbox"
+                                name="memberhobby"
+                                value="game"
+                            >
+                            게임
+                        </label>
+
+                        <label class="hobby-option">
+                            <input
+                                type="checkbox"
+                                name="memberhobby"
+                                value="movie"
+                            >
+                            영화
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 자기소개 -->
+                <div class="form-group">
+                    <label for="memberintro">자기소개</label>
+                    <textarea
+                        id="memberintro"
+                        name="memberintro"
+                        maxlength="500"
+                        placeholder="자신을 자유롭게 소개해 주세요. (500자 이내)"
+                    ></textarea>
+                </div>
+
+                <!-- 버튼 -->
+                <div class="button-group">
+                    <input
+                        type="submit"
+                        class="submit-btn"
+                        value="가입하기"
+                    >
+
+                    <input
+                        type="reset"
+                        class="reset-btn"
+                        value="초기화"
+                    >
+                </div>
+
+            </form>
+        </div>
+
+        <div class="footer">
+            © NAVER Corp. All Rights Reserved.
+        </div>
+
+    </div>
+
+</body>
+</html>

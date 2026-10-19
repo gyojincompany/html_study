@@ -1,0 +1,26 @@
+
+.red { /* 클래스 선택자 활용 */
+    color:rgb(233, 76, 3);
+    font-size: 100px;
+}
+
+h1.blue {
+    color:rgb(3, 7, 233);
+    font-size: 100px;
+}
+
+p.green {
+    color: rgb(64, 226, 43);
+    font-size: 50px;
+}
+
+p.pink {
+    color: rgb(226, 43, 134);
+    font-size: 50px;
+}
+
+#gray {
+    color: rgb(16, 32, 32);
+    font-size: 60;
+    font-family: 궁서체, 맑은 고딕, 굴림, 돋움;
+}

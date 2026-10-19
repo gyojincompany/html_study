@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네이버 스타일 회원가입</title>
+    <style>
+        /* 전체 페이지 스타일 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+            background-color: #f5f6f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #03c75a; /* 네이버 그린 컬러 */
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        /* 폼 전체 감싸는 박스 스타일 */
+        form {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 테이블 기본 설정 */
+        table {
+            border-collapse: collapse;
+            width: 600px;
+        }
+
+        tr {
+            border-bottom: 1px solid #ebecef;
+        }
+
+        tr:last-child {
+            border-bottom: none;
+        }
+
+        td {
+            padding: 12px 10px;
+            vertical-align: middle;
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* 항목 이름(라벨) 스타일 */
+        td:first-child {
+            font-weight: bold;
+            width: 110px;
+            color: #222;
+        }
+
+        /* 입력창 공통 스타일 (input, textarea) */
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 12px;
+            border: 1px solid #dadada;
+            border-radius: 4px;
+            background-color: #fff;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        /* 입력창 포커스 시 네이버 그린 테두리 */
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #03c75a;
+        }
+
+        /* 라디오 버튼 및 체크박스 간격 */
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 4px;
+            margin-left: 12px;
+            accent-color: #03c75a; /* 체크박스/라디오 컬러 설정 */
+        }
+
+        input[type="radio"]:first-of-type,
+        input[type="checkbox"]:first-of-type {
+            margin-left: 0;
+        }
+
+        /* 버튼 스타일 */
+        input[type="submit"],
+        input[type="reset"] {
+            width: 48%;
+            padding: 12px 0;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        input[type="submit"] {
+            background-color: #03c75a;
+            color: #ffffff;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #02b350;
+        }
+
+        input[type="reset"] {
+            background-color: #f1f3f5;
+            color: #495057;
+            margin-left: 4%;
+        }
+
+        input[type="reset"]:hover {
+            background-color: #e2e6ea;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>NAVER 회원가입</h1>
+
+    <form>
+        <table>        
+            <tr>
+                <td>아이디</td>
+                <td>
+                    <input type="text" name="memberid" placeholder="5~12자 사이로 입력하세요">
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td>
+                    <input type="password" name="password" placeholder="대문자+소문자+숫자로 만든 10자 이상">
+                </td>
+            </tr>
+            <tr>
+                <td>회원성별</td>
+                <td>
+                    <input type="radio" name="membergender" value="male" checked>남성
+                    <input type="radio" name="membergender" value="female">여성
+                </td>
+            </tr>
+            <tr>
+                <td>회원이름</td>
+                <td>
+                    <input type="text" name="membername" placeholder="이름을 입력하세요">
+                </td>
+            </tr>
+            <tr>
+                <td>전화번호</td>
+                <td>
+                    <input type="text" name="memberphone" placeholder="'-' 없이 번호만 입력">
+                </td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td>
+                    <input type="email" name="memberemail" placeholder="example@naver.com">
+                </td>
+            </tr>
+            <tr>
+                <td>회원주소</td>
+                <td>
+                    <input type="text" name="memberaddr" placeholder="주소를 입력하세요">
+                </td>
+            </tr>
+            <tr>
+                <td>회원생일</td>
+                <td>
+                    <input type="date" name="memberbirth">
+                </td>
+            </tr>
+            <tr>
+                <td>회원취미</td>
+                <td>
+                    <input type="checkbox" name="memberhobby" value="sports">운동
+                    <input type="checkbox" name="memberhobby" value="book">독서
+                    <input type="checkbox" name="memberhobby" value="game">게임
+                    <input type="checkbox" name="memberhobby" value="movie">영화
+                </td>
+            </tr>
+            <tr>
+                <td>자기소개</td>
+                <td>
+                    <textarea name="memberintro" rows="5" placeholder="500자 이내로 작성하시오."></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="padding-top: 20px;">
+                    <input type="submit" value="가입완료">
+                    <input type="reset" value="초기화">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
